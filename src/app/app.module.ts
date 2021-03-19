@@ -16,11 +16,14 @@ import { MenuComponent } from './components/menu/menu.component';
 import { PostFeedComponent } from './components/post-feed/post-feed.component';
 import { NgChatModule } from 'ng-chat';
 import { DemoAdaptorComponent } from './components/demo-adaptor/demo-adaptor.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ChatComponent } from './components/contacts/chat/chat.component';
+import { NbPasswordAuthStrategy, NbAuthModule } from '@nebular/auth';
 
 // NEBULAR
 import { NbSidebarModule, NbLayoutModule, NbButtonModule } from '@nebular/theme';
 import {NbThemeModule,NbMenuModule, NbMenuItem,NbWindowModule,NbChatModule, NbSidebarService} from '@nebular/theme';
-import { ChatComponent } from './components/contacts/chat/chat.component';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 @NgModule({
   declarations: [
@@ -43,16 +46,25 @@ import { ChatComponent } from './components/contacts/chat/chat.component';
     ReactiveFormsModule,
     FlexLayoutModule,
     NgChatModule,
+    HttpClientModule,
 
     //NEBULAR
 
     NbSidebarModule.forRoot(),
     NbLayoutModule,
-    NbThemeModule.forRoot({ name: 'default' }),
     NbMenuModule.forRoot(),
     NbWindowModule.forRoot(),
-    NbChatModule
-
+    NbChatModule,
+    NbAuthModule.forRoot({
+     strategies: [
+       NbPasswordAuthStrategy.setup({
+         name: 'email',
+       }),
+     ],
+     forms: {},
+   }),
+    NbThemeModule.forRoot({ name: 'default' }),
+    NbEvaIconsModule,
 
   ],
   providers: [
