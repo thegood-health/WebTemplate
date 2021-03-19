@@ -1,34 +1,59 @@
 
 
-    <div class="container-fluid gedf-wrapper">
-        <div class="row">
+<nb-layout>
 
-            <div class="col-md-3">
+  <nb-layout-header fixed layout-background-color	="red">TheGood.health </nb-layout-header>
 
-              <app-menu>
+ <nb-layout-footer></nb-layout-footer>
+
+ <nb-layout-column  >
+       <div class="row ">
+
+           <!-- <div class="col-sm-3">
+
+           </div> -->
+
+           <div class=" gedf-main">
+
+               <!--- \\\\\\\Post-->
+               <app-post-feed>
+
+               </app-post-feed>
+
+
+
+           </div>
+
+<!--
+           <div class="col-md-3">
+
+           </div> -->
+
+
+
+       </div>
+
+ </nb-layout-column>
+
+
+ <nb-sidebar state="expanded" responsive=true left>
+
+              <app-menu style="width:100%" >
 
               </app-menu>
-            </div>
+              <nb-card>
+                <nb-menu [items]="items" autoCollapse="true">
+                </nb-menu>
+              </nb-card>
+  </nb-sidebar>
+  <nb-sidebar state="expanded" responsive=true right>
 
-            <div class="col-md-6 gedf-main">
+    <app-contacts>
 
-                <!--- \\\\\\\Post-->
-                <app-post-feed>
-
-                </app-post-feed>
-
-
-
-            </div>
-
-
-            <div class="col-md-3">
-              <app-contacts>
-
-              </app-contacts>
-            </div>
+    </app-contacts>
 
 
 
-        </div>
-    </div>
+   </nb-sidebar>
+
+</nb-layout>

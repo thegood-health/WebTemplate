@@ -17,6 +17,11 @@ import { PostFeedComponent } from './components/post-feed/post-feed.component';
 import { NgChatModule } from 'ng-chat';
 import { DemoAdaptorComponent } from './components/demo-adaptor/demo-adaptor.component';
 
+// NEBULAR
+import { NbSidebarModule, NbLayoutModule, NbButtonModule } from '@nebular/theme';
+import {NbThemeModule,NbMenuModule, NbMenuItem,NbWindowModule,NbChatModule, NbSidebarService} from '@nebular/theme';
+import { ChatComponent } from './components/contacts/chat/chat.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +31,8 @@ import { DemoAdaptorComponent } from './components/demo-adaptor/demo-adaptor.com
     ContactsComponent,
     MenuComponent,
     PostFeedComponent,
-    DemoAdaptorComponent
+    DemoAdaptorComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -36,9 +42,21 @@ import { DemoAdaptorComponent } from './components/demo-adaptor/demo-adaptor.com
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    NgChatModule
+    NgChatModule,
+
+    //NEBULAR
+
+    NbSidebarModule.forRoot(),
+    NbLayoutModule,
+    NbThemeModule.forRoot({ name: 'default' }),
+    NbMenuModule.forRoot(),
+    NbWindowModule.forRoot(),
+    NbChatModule
+
+
   ],
-  providers: [],
+  providers: [
+    NbSidebarService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 

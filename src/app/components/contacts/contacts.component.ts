@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, TemplateRef, ViewChild, OnInit } from '@angular/core';
 
-
+import { NbWindowService } from '@nebular/theme';
+import {ChatComponent} from './chat/chat.component';
 export interface ContactInt {
   name: string;
   updated: Date;
@@ -30,12 +31,27 @@ export class ContactsComponent implements OnInit {
   }
 ];
 
-  constructor() { }
+constructor(private windowService: NbWindowService) {}
 
   ngOnInit(): void {
   }
 
+  @ViewChild('sayHelloTemplate', { read: TemplateRef }) sayHelloTemplate!:TemplateRef<any>;
 
+
+    openWindowWithBackdrop() {
+      this.windowService.open(
+        ChatComponent,
+        { title: 'Window with backdrop', hasBackdrop: true },
+      );
+    }
+
+    openWindowWithoutBackdrop() {
+      this.windowService.open(
+        ChatComponent,
+        { title: 'Window without backdrop', hasBackdrop: false, closeOnEsc: false },
+      );
+    }
 
     onAdd(e: Event) {
       e.preventDefault();
@@ -48,6 +64,6 @@ export class ContactsComponent implements OnInit {
     }
 
     save(link:ContactInt) {
-      alert(link.name);
+      this.openWindowWithoutBackdrop();
     }
 }
