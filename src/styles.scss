@@ -1,7 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
-// ...
 
+.nb-theme-default nb-layout .layout .layout-container .content .columns nb-layout-column {
+     padding: 0 0 0 0;
+}
+//
+//
+.nb-theme-default nb-layout-header.fixed ~ .layout-container {
+  padding-top: 2.57rem ;
+
+}
 body {
             background-color: #eeeeee;
         }
@@ -11,7 +19,7 @@ body {
         }
 
         .gedf-wrapper {
-            margin-top: 0.97rem;
+            margin-top: 0rem;
         }
 
         @media (min-width: 992px) {
@@ -32,13 +40,12 @@ body {
 
 html,
 body {
-  height: 100%;
 }
 
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  min-height: 100vh;
+  max-height: 100vh;
   background: #e2e2e2;
 }
 

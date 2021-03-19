@@ -18,12 +18,12 @@ import { NgChatModule } from 'ng-chat';
 import { DemoAdaptorComponent } from './components/demo-adaptor/demo-adaptor.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ChatComponent } from './components/contacts/chat/chat.component';
-import { NbPasswordAuthStrategy, NbAuthModule } from '@nebular/auth';
-
+import {AuthGuard} from './auth-guard.service';
 // NEBULAR
 import { NbSidebarModule, NbLayoutModule, NbButtonModule } from '@nebular/theme';
 import {NbThemeModule,NbMenuModule, NbMenuItem,NbWindowModule,NbChatModule, NbSidebarService} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { NbPasswordAuthStrategy,NbAuthSimpleToken,NbAuthJWTToken,NbDummyAuthStrategy, NbAuthModule } from '@nebular/auth';
 
 @NgModule({
   declarations: [
@@ -57,18 +57,41 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     NbChatModule,
     NbAuthModule.forRoot({
      strategies: [
-       NbPasswordAuthStrategy.setup({
+       // NbPasswordAuthStrategy.setup({
+       //   name: 'email',
+       // }),
+       NbDummyAuthStrategy.setup({
          name: 'email',
-       }),
+         alwaysFail: false,
+        token: {
+          class: NbAuthSimpleToken,
+
+          key: 'auth_app_token'
+          // this parameter tells where to look for the token
+
+        },
+
+
+
+
+      }),
+
      ],
      forms: {},
    }),
-    NbThemeModule.forRoot({ name: 'default' }),
+    NbThemeModule.forRoot(),
     NbEvaIconsModule,
+
+
 
   ],
   providers: [
-    NbSidebarService],
+    NbSidebarService,
+     AuthGuard,
+
+
+
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 

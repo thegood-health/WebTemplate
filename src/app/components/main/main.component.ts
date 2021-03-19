@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NbMenuItem } from '@nebular/theme';
+import { NbAuthSimpleToken, NbAuthJWTToken,NbAuthToken, NbAuthService } from '@nebular/auth';
 
 @Component({
   selector: 'app-main',
@@ -7,7 +8,21 @@ import { NbMenuItem } from '@nebular/theme';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+  user = {};
 
+  constructor(private authService: NbAuthService) {
+
+    this.authService.onTokenChange()
+      .subscribe((token: NbAuthToken) => {
+        alert(token.getValue())
+        if (token.isValid()) {
+          token.getValue()
+          this.user = token.getPayload(); // here we receive a payload from the token and assigns it to our `user` variable
+          alert(this.user)
+        }
+
+      });
+  }
   items: NbMenuItem[] = [
       {
         title: 'Profile',
@@ -60,7 +75,6 @@ export class MainComponent implements OnInit {
   {
     console.log(event);
   }
-  constructor() { }
 
   ngOnInit(): void {
   }
