@@ -1,0 +1,4 @@
+<mat-drawer-container>
+    <mat-drawer class="sidenav-fixed" mode="side" opened position="end">My drawer content</mat-drawer>
+    <mat-drawer-content>Main content</mat-drawer-content>
+</mat-drawer-container>

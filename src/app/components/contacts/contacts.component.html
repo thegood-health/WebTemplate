@@ -1,0 +1,31 @@
+<p>yay </p>
+<div class="card gedf-card">
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+            card's content.</p>
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+    </div>
+</div>
+<div class="card gedf-card">
+  <mat-nav-list>
+    <h3 matSubheader>This is the Contacts</h3>
+    <!-- <a mat-list-item >
+      <span matLine>Title</span>
+      <button mat-icon-button (click)="onAdd($event)">
+      </button>
+      <button mat-icon-button (click)="onRemove($event)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </a> -->
+    <a mat-list-item *ngFor="let link of contactsList" >
+      <span matLine>{{ link.name }}</span>
+      <button mat-icon-button (click)="save(link)">
+        <mat-icon>chat</mat-icon>
+      </button>
+    </a>
+
+</mat-nav-list>
+    </div>
